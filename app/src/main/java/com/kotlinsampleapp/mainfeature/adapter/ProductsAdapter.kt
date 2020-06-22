@@ -1,4 +1,4 @@
-package com.kotlinsampleapp.mainfeature.ui
+package com.kotlinsampleapp.mainfeature.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,10 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
     var productSelectionListener: ProductSelectionListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder =
-        ProductViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false), productSelectionListener)
+        ProductViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false),
+            productSelectionListener
+        )
 
     override fun getItemCount(): Int = items?.size ?: 0
 

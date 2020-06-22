@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.kotlinsampleapp.R
 import com.kotlinsampleapp.common.hide
 import com.kotlinsampleapp.common.show
+import com.kotlinsampleapp.mainfeature.adapter.ProductsAdapter
 import com.kotlinsampleapp.mainfeature.listener.ProductSelectionListener
 import com.kotlinsampleapp.mainfeature.model.Product
 import com.kotlinsampleapp.mainfeature.viewmodel.MainViewModel
