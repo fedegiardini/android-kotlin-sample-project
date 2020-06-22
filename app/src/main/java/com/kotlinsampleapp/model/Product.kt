@@ -1,4 +1,4 @@
-package com.kotlinsampleapp.mainfeature.model
+package com.kotlinsampleapp.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

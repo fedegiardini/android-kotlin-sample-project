@@ -1,6 +1,6 @@
 package com.kotlinsampleapp.mainfeature.listener
 
-import com.kotlinsampleapp.mainfeature.model.Product
+import com.kotlinsampleapp.mainfeature.model.ProductViewData
 
 /**
  * Listener used for navigation when clicking on a Product
@@ -8,5 +8,5 @@ import com.kotlinsampleapp.mainfeature.model.Product
  * @author federico.giardini
  */
 interface ProductSelectionListener {
-    fun onProductSelected(product: Product)
+    fun onProductSelected(product: ProductViewData)
 }

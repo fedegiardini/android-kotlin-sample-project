@@ -3,7 +3,7 @@ package com.kotlinsampleapp.mainfeature.data
 import android.util.Log
 import com.kotlinsampleapp.common.LoadingStatus
 import com.kotlinsampleapp.common.Result
-import com.kotlinsampleapp.mainfeature.model.SearchResponse
+import com.kotlinsampleapp.model.SearchResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

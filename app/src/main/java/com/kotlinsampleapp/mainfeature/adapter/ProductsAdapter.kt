@@ -9,7 +9,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.kotlinsampleapp.R
 import com.kotlinsampleapp.common.show
 import com.kotlinsampleapp.mainfeature.listener.ProductSelectionListener
-import com.kotlinsampleapp.mainfeature.model.Product
+import com.kotlinsampleapp.mainfeature.model.ProductViewData
 import com.kotlinsampleapp.util.DrawableHelper
 import kotlinx.android.synthetic.main.list_item.view.*
 
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
  */
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
-    private var items: MutableList<Product>? = null
+    private var items: MutableList<ProductViewData>? = null
 
     var productSelectionListener: ProductSelectionListener? = null
 
@@ -36,12 +36,12 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
         }
     }
 
-    fun setItemList(newItems: List<Product>) {
+    fun setItemList(newItems: List<ProductViewData>) {
         items = newItems.toMutableList()
         notifyDataSetChanged()
     }
 
-    fun updateItems(newItems: List<Product>) {
+    fun updateItems(newItems: List<ProductViewData>) {
         items?.addAll(newItems)
         notifyDataSetChanged()
     }
@@ -52,14 +52,14 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
         private val price = itemView.itemPrice
         private val freeShipping = itemView.itemFreeShipping
 
-        fun bind(item: Product) {
+        fun bind(item: ProductViewData) {
             itemView.setOnClickListener {
                 listener?.onProductSelected(item)
             }
 
             title.text = item.title
             Glide.with(itemView.itemImage.context)
-                .load(item.thumbnail)
+                .load(item.thumbnailUrl)
                 .centerInside()
                 .placeholder(DrawableHelper.getCircularDrawable(itemView.context))
                 .transition(DrawableTransitionOptions.withCrossFade())
@@ -67,7 +67,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(
                 .error(R.drawable.ic_baseline_error_24)
                 .into(image)
             price.text = itemView.context.getString(R.string.item_price, item.price.toInt())
-            if (item.shipping.free_shipping) freeShipping.show()
+            if (item.hasFreeShipping) freeShipping.show()
         }
     }
 }

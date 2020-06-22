@@ -3,8 +3,8 @@ package com.kotlinsampleapp.mainfeature.viewmodel
 import androidx.lifecycle.*
 import com.kotlinsampleapp.common.LoadingStatus
 import com.kotlinsampleapp.common.Result
-import com.kotlinsampleapp.mainfeature.model.Product
-import com.kotlinsampleapp.mainfeature.model.SearchResponse
+import com.kotlinsampleapp.mainfeature.model.ProductMapper
+import com.kotlinsampleapp.mainfeature.model.ProductViewData
 import com.kotlinsampleapp.mainfeature.usecase.SearchItemsByQueryUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.map
@@ -29,8 +29,12 @@ class MainViewModel(
                         SearchResponseViewState.Loading(true)
                     } else SearchResponseViewState.Loading(false)
                 }
-                is Result.Success -> SearchResponseViewState.Success(result.data)
-                is Result.LoadMore -> SearchResponseViewState.LoadMore(result.data.results)
+                is Result.Success -> SearchResponseViewState.Success(result.data.results.map {
+                    ProductMapper.toProductViewData(it)
+                }, result.data.paging.total)
+                is Result.LoadMore -> SearchResponseViewState.LoadMore(result.data.results.map {
+                    ProductMapper.toProductViewData(it)
+                })
                 is Result.Error -> SearchResponseViewState.Failed(result.exception)
             }
         }.asLiveData()
@@ -56,7 +60,7 @@ class MainViewModel(
     sealed class SearchResponseViewState {
         data class Loading(val newSearch: Boolean) : SearchResponseViewState()
         data class Failed(val exception: Exception) : SearchResponseViewState()
-        data class Success(val data: SearchResponse) : SearchResponseViewState()
-        data class LoadMore(val data: List<Product>) : SearchResponseViewState()
+        data class Success(val products: List<ProductViewData>, val itemsQuantity: Int) : SearchResponseViewState()
+        data class LoadMore(val products: List<ProductViewData>) : SearchResponseViewState()
     }
 }

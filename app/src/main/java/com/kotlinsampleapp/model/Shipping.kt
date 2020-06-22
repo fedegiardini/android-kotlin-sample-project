@@ -1,5 +1,6 @@
-package com.kotlinsampleapp.mainfeature.model
+package com.kotlinsampleapp.model
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
@@ -7,5 +8,6 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class Shipping(
-    val free_shipping: Boolean
+    @Json(name = "free_shipping")
+    val freeShipping: Boolean
 )

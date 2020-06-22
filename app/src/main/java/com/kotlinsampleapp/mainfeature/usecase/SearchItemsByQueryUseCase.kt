@@ -2,7 +2,7 @@ package com.kotlinsampleapp.mainfeature.usecase
 
 import com.kotlinsampleapp.common.Result
 import com.kotlinsampleapp.mainfeature.data.MainRepository
-import com.kotlinsampleapp.mainfeature.model.SearchResponse
+import com.kotlinsampleapp.model.SearchResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 

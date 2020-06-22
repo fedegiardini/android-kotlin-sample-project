@@ -1,6 +1,6 @@
 package com.kotlinsampleapp.mainfeature.data
 
-import com.kotlinsampleapp.mainfeature.model.SearchResponse
+import com.kotlinsampleapp.model.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

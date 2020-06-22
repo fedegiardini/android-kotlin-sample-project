@@ -1,5 +1,6 @@
-package com.kotlinsampleapp.mainfeature.model
+package com.kotlinsampleapp.model
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
@@ -10,5 +11,6 @@ data class PagingData(
     val total: Int,
     val offset: Int,
     val limit: Int,
-    val primary_results: Int
+    @Json(name = "primary_results")
+    val primaryResults: Int
 )
