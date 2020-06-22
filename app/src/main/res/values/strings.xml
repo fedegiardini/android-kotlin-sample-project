@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Kotlin Sample App</string>
+    <string name="search_products">Buscar productos</string>
+    <string name="search_hint">Buscar en Mercado Libre</string>
+    <string name="error_message">Lo sentimos, ocurrio un error con la busqueda.</string>
+    <string name="item_price">$ %d</string>
+    <string name="free_shipping">Envio Gratis</string>
+    <string name="results_found">Se encontraron %d resultados.</string>
+    <string name="result_found">Se encontro 1 resultado.</string>
+</resources>
